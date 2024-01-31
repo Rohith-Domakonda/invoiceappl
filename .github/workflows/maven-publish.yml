@@ -41,4 +41,11 @@ jobs:
 
 
     - name: Move JAR to target folder
-      run: mkdir target/ && mv '${{ github.workspace }}/target/*.jar' target/
+      run: |
+        mkdir -p target
+        mv "${{ github.workspace }}/target"/* target/
+        git add target/*
+        git commit -m "Move target folder to main branch"
+        git push origin main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
