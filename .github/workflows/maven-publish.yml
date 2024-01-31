@@ -36,5 +36,9 @@ jobs:
         name: java-app
         path: '${{ github.workspace }}/target/*.jar'
 
+    - name: Debug - List files in target directory
+      run: ls -l '${{ github.workspace }}/target/'
+
+
     - name: Move JAR to target folder
       run: mkdir target/ && mv '${{ github.workspace }}/target/*.jar' target/
